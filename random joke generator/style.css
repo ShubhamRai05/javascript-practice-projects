@@ -3,6 +3,12 @@ body
 {
     background-color: #233d4d;
     font-family: monospace;
+    
+    
+}
+.main
+{
+    display: flex;
 }
 .wrapper
 {
@@ -61,5 +67,9 @@ body
     background-color: #451e04;
     color: #dee6eb;
 }
-
+.wrapper .src-meme
+{
+    width: 50%;
+    height: 80%;
+}
 
