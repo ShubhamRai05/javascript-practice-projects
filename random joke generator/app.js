@@ -5,9 +5,9 @@ const body = document.body
 let playCount = 0;
 
 let playGif = () => {
-    if (playCount < 1) {
+    if (playCount < 3) {
         playCount++;
-        setTimeout(playGif, 1500);
+        setTimeout(playGif, 2000);
     } else {
         body.style.background = "#233d4d"; // Set background color after playing GIF twice
     }
@@ -70,3 +70,4 @@ let jokeGenerator = () => {
 jokeGenerator()
 btn.addEventListener("click", jokeGenerator)
 imgBtn.addEventListener("click", imageMemeCreator)
+
