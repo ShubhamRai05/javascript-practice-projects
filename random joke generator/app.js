@@ -1,6 +1,26 @@
 const btn = document.querySelector(".btn")
 const imgBtn = document.querySelector(".img-btn")
 const imgSrc = document.querySelector(".src-meme")
+const body = document.body
+let playCount = 0;
+
+let playGif = () => {
+    if (playCount < 1) {
+        playCount++;
+        setTimeout(playGif, 1500);
+    } else {
+        body.style.background = "#233d4d"; // Set background color after playing GIF twice
+    }
+};
+
+const backgroundGif = new Image();
+backgroundGif.src = './assets/bg1.gif'; // Load the background GIF image
+backgroundGif.onload = () => {
+    body.style.background = `url(${backgroundGif.src})`; // Set the background image
+    body.style.backgroundSize = "cover"; // Set the background size to cover
+    body.style.backgroundPosition = "center"; // Set the background position to center
+    playGif(); // Start playing the GIF
+};
 
 
 let imageMemeCreator = async () => {
@@ -14,6 +34,8 @@ let imageMemeCreator = async () => {
     };
 
     try {
+
+
         const response = await fetch(url, options);
         const result = await response.json();
         imgSrc.src = result[Math.floor(Math.random() * 12)].image
@@ -45,6 +67,6 @@ let jokeGenerator = () => {
 
 }
 
-
+jokeGenerator()
 btn.addEventListener("click", jokeGenerator)
 imgBtn.addEventListener("click", imageMemeCreator)

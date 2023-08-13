@@ -9,6 +9,15 @@ body
 .main
 {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.bg-video 
+{
+    background:url("./assets/bg1.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .wrapper
 {
