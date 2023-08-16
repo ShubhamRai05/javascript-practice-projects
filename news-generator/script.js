@@ -21,8 +21,10 @@ const bindData = (articles) => {
         if (!article.urlToImage) {
             return;
         }
+        // deep cloning the cards
         const cardClone = newsTemplate.content.cloneNode(true);
 
+        // some issues are yet to be fixed
         const newsTitle = document.getElementsByClassName("news-title")
         const newsSource = document.getElementsByClassName("news-source")
         const newsDesc = document.getElementsByClassName("news-desc")
