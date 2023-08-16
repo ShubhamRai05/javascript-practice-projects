@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
+    <script src="script.js" type="module"></script>
+    <script src="api.js" type="module"></script>
 </head>
 
 <body>
@@ -32,31 +33,28 @@
 
     </nav>
     <main>
-        <div class="card-container container flex">
-            <div class="card">
-                <div class="card-header">
-<img src="https://via.placeholder.com/400x200" alt="new-img" id="news-img">
-                </div>
+        <div class="card-container container flex" id="card-container">
 
+        </div>
+
+    </main>
+    <template id="news-template">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="new-img" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the title</h3>
+                <h6 class="news-source" id="news-source">This is the content</h6>
+                <p class="news-desc" id="news-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eligendi sit quo architecto.
+                    Ad,
+                    facilis sint? Dolorem at minima molestias?
+                </p>
             </div>
         </div>
-    </main>
+    </template>
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
