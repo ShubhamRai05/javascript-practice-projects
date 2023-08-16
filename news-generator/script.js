@@ -15,18 +15,29 @@ let fetchNews = async (query) => {
 
 const bindData = (articles) => {
     const cardContainer = document.getElementById("card-container")
-    console.log(cardContainer);
     const newsTemplate = document.getElementById("news-template")
-
-    cardContainer.innerHTML = ""
 
     articles.forEach((article) => {
         if (!article.urlToImage) {
-            return
+            return;
         }
         const cardClone = newsTemplate.content.cloneNode(true);
+
+        const newsTitle = document.getElementsByClassName("news-title")
+        const newsSource = document.getElementsByClassName("news-source")
+        const newsDesc = document.getElementsByClassName("news-desc")
+
+        const newsImg = cardClone.querySelector(".news-img")
+
+        newsImg.src = article.urlToImage
+        newsTitle.textContent = article.title
+        newsSource.textContent = article.author
+        newsDesc.textContent = article.description
+
         cardContainer.appendChild(cardClone)
 
     })
+
+
 
 }
