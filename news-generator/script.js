@@ -17,29 +17,36 @@ const bindData = (articles) => {
     const cardContainer = document.getElementById("card-container")
     const newsTemplate = document.getElementById("news-template")
 
+    cardContainer.innerHTML = ""
     articles.forEach((article) => {
+        console.log(article.description);
         if (!article.urlToImage) {
             return;
         }
         // deep cloning the cards
         const cardClone = newsTemplate.content.cloneNode(true);
 
-        // some issues are yet to be fixed
-        const newsTitle = document.getElementsByClassName("news-title")
-        const newsSource = document.getElementsByClassName("news-source")
-        const newsDesc = document.getElementsByClassName("news-desc")
 
-        const newsImg = cardClone.querySelector(".news-img")
 
-        newsImg.src = article.urlToImage
-        newsTitle.textContent = article.title
-        newsSource.textContent = article.author
-        newsDesc.textContent = article.description
 
+
+        fillDataInCard(cardClone, article)
         cardContainer.appendChild(cardClone)
 
     })
 
 
+
+}
+
+function fillDataInCard(card, article) {
+    const newsImg = card.querySelector("#news-img")
+    const newsTitle = card.querySelector("#news-title")
+    const newsSource = card.querySelector("#news-source")
+    const newsDesc = card.querySelector("#news-desc")
+    newsImg.src = article.urlToImage
+    newsTitle.textContent = article.title
+    newsSource.textContent = article.author
+    newsDesc.textContent = article.description
 
 }
