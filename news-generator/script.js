@@ -27,7 +27,7 @@ const bindData = (articles) => {
         const cardClone = newsTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article)
         cardContainer.appendChild(cardClone)
-        
+
     })
 
 
@@ -43,16 +43,31 @@ function fillDataInCard(card, article) {
     newsTitle.textContent = article.title
     newsSource.textContent = article.author
     newsDesc.textContent = article.description
-    card.firstElementChild.addEventListener("click" , ()=>{
-        window.open(article.url , "_blank")
+    card.firstElementChild.addEventListener("click", () => {
+        window.open(article.url, "_blank")
     })
-    
+
 }
 
 const navItem = document.querySelectorAll(".nav-item")
-navItem.forEach(item=>{
-    item.addEventListener("click" , ()=>{
-        let q = item.innerText 
+navItem.forEach(item => {
+    item.addEventListener("click", () => {
+        let q = item.innerText
         fetchNews(q)
     })
+})
+
+const searchInput = document.querySelector(".news-input")
+const searchButton = document.querySelector(".search-button")
+searchButton.addEventListener("click", () => {
+    if (searchInput.value.trim() !== "") {
+        let q = searchInput.value
+        fetchNews(q)
+        console.log("object");
+    }
+    else {
+        alert("please provide input");
+    }
+
+
 })
