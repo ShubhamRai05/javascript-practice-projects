@@ -86,7 +86,10 @@ nav
 {
  color: red;   
 }
-
+.nav-item.active
+{
+    color: var(--accent-color-dark);
+}
 
 .search-bar
 {

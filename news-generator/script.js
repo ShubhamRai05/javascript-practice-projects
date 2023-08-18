@@ -48,14 +48,24 @@ function fillDataInCard(card, article) {
     })
 
 }
+const navItems = document.querySelectorAll(".nav-item");
 
-const navItem = document.querySelectorAll(".nav-item")
-navItem.forEach(item => {
+let activeNavItem = null; // To keep track of the currently active item
+
+navItems.forEach(item => {
     item.addEventListener("click", () => {
-        let q = item.innerText
-        fetchNews(q)
-    })
-})
+        if (activeNavItem) {
+            activeNavItem.classList.remove("active");
+        }
+
+        item.classList.add("active");
+        activeNavItem = item;
+
+        let q = item.textContent;
+        fetchNews(q);
+    });
+});
+
 
 const searchInput = document.querySelector(".news-input")
 const searchButton = document.querySelector(".search-button")
@@ -63,7 +73,9 @@ searchButton.addEventListener("click", () => {
     if (searchInput.value.trim() !== "") {
         let q = searchInput.value
         fetchNews(q)
-        console.log("object");
+
+        activeNavItem.classList.remove("active");
+
     }
     else {
         alert("please provide input");
