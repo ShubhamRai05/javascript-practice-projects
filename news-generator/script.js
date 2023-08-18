@@ -1,6 +1,7 @@
 import { API_KEY } from "./newsApi.js";
 const URL = "https://newsapi.org/v2/everything?q=";
 
+
 window.addEventListener("load", () => fetchNews("India"))
 
 let fetchNews = async (query) => {
@@ -26,7 +27,7 @@ const bindData = (articles) => {
         const cardClone = newsTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article)
         cardContainer.appendChild(cardClone)
-
+        
     })
 
 
@@ -42,7 +43,16 @@ function fillDataInCard(card, article) {
     newsTitle.textContent = article.title
     newsSource.textContent = article.author
     newsDesc.textContent = article.description
-    card.addEventListener("click", () => {
-        window.location.href = article.url
+    card.firstElementChild.addEventListener("click" , ()=>{
+        window.open(article.url , "_blank")
     })
+    
 }
+
+const navItem = document.querySelectorAll(".nav-item")
+navItem.forEach(item=>{
+    item.addEventListener("click" , ()=>{
+        let q = item.innerText 
+        fetchNews(q)
+    })
+})
