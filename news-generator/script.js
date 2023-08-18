@@ -19,17 +19,11 @@ const bindData = (articles) => {
 
     cardContainer.innerHTML = ""
     articles.forEach((article) => {
-        console.log(article.description);
         if (!article.urlToImage) {
             return;
         }
         // deep cloning the cards
         const cardClone = newsTemplate.content.cloneNode(true);
-
-
-
-
-
         fillDataInCard(cardClone, article)
         cardContainer.appendChild(cardClone)
 
@@ -48,5 +42,7 @@ function fillDataInCard(card, article) {
     newsTitle.textContent = article.title
     newsSource.textContent = article.author
     newsDesc.textContent = article.description
-
+    card.addEventListener("click", () => {
+        window.location.href = article.url
+    })
 }
