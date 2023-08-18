@@ -14,6 +14,8 @@ let fetchNews = async (query) => {
 }
 
 
+
+
 const bindData = (articles) => {
     const cardContainer = document.getElementById("card-container")
     const newsTemplate = document.getElementById("news-template")
@@ -54,12 +56,14 @@ let activeNavItem = null; // To keep track of the currently active item
 
 navItems.forEach(item => {
     item.addEventListener("click", () => {
+        console.log(activeNavItem, "before if");
         if (activeNavItem) {
             activeNavItem.classList.remove("active");
         }
-
+        console.log(activeNavItem, "after if");
         item.classList.add("active");
         activeNavItem = item;
+        console.log(activeNavItem, "after adding class");
 
         let q = item.textContent;
         fetchNews(q);
@@ -81,5 +85,11 @@ searchButton.addEventListener("click", () => {
         alert("please provide input");
     }
 
+
+})
+const title = document.querySelector(".title")
+title.addEventListener("click", () => {
+    fetchNews("india")
+    activeNavItem.classList.remove("active");
 
 })
